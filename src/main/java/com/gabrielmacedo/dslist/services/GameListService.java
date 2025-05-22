@@ -7,15 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.gabrielmacedo.dslist.dto.GameListDTO;
-
 import com.gabrielmacedo.dslist.entities.GameList;
+import com.gabrielmacedo.dslist.projections.GameMinProjection;
 import com.gabrielmacedo.dslist.repositories.GameListRepository;
+import com.gabrielmacedo.dslist.repositories.GameRepository;
 
 @Service
 public class GameListService {
 	
 	@Autowired
 	private GameListRepository gameListRepository;
+	
+	@Autowired
+	private GameRepository gameRepository;
 	
 	@Transactional(readOnly = true)
 	public List<GameListDTO> findAll(){
@@ -27,5 +31,20 @@ public class GameListService {
 	public GameListDTO findById(Long id){
 		GameList result = gameListRepository.findById(id).get();
 		return new GameListDTO(result);
+	}
+	
+	@Transactional
+	public void move(Long listId, int sourceIndex, int destinationIndex) {
+		
+		List<GameMinProjection> list = gameRepository.searchByList(listId);
+		GameMinProjection obj = list.remove(sourceIndex);
+		list.add(destinationIndex, obj);
+		
+		int min = sourceIndex < destinationIndex ? sourceIndex : destinationIndex;
+		int max = destinationIndex < sourceIndex ? destinationIndex : sourceIndex;
+		
+		for(int i = min; i <= max; i++) {
+			gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
+		}
 	}
 }
