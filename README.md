@@ -7,15 +7,16 @@ Desenvolvida durante o intensivão Java/Spring do Prof. Nélio Alves, com o intu
 - JPA
 - SQL
 - PostGreSQL
+- Docker
 
 ## Conceitos utilizados
-- Arquitetura Rest: Divisão em Repositories, Controllers e Services
-- DTOs: Utilizado para receber dados na Requisição e responder uma requisição
-- Idempotência: Utilizando o POST ao invés do UPDATE para alterar a posição da list
+- Arquitetura Rest: divisão em Repositories, Controllers e Services
+- DTOs: utilizado para receber dados na Requisição e responder uma requisição
+- Idempotência: utilizando o POST ao invés do UPDATE para alterar a posição da list
 - Divisão de ambientes de Desenvolvimento (test, dev)
 
 ## Funcionamento
-A API consiste em uma lista de games, logo, é possível consultar todos os games de uma lista, consultar um game pelo ID, consultar todas as listas, consultar uma lista por ID e alterar a ordem dos games em sua lista.
+A API busca games em listas, logo, é possível consultar todos os games de uma lista, consultar um game pelo ID, consultar todas as listas, consultar uma lista por ID e alterar a ordem dos games em sua lista.
 
 ## Endpoints
 ### GET all lists
