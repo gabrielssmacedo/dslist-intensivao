@@ -20,7 +20,7 @@ import com.gabrielmacedo.dslist.services.GameService;
 
 @RestController
 @RequestMapping(value = "/lists")
-@Tag(name = "Games List", description = "Gerenciador de lista de games")
+@Tag(name = "Games List")
 public class GameListController {
 	
 	@Autowired

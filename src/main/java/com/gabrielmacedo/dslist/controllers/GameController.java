@@ -3,6 +3,7 @@ package com.gabrielmacedo.dslist.controllers;
 import java.util.List;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import com.gabrielmacedo.dslist.services.GameService;
 
 @RestController
 @RequestMapping(value = "/games")
-@Tag(name = "Games", description = "Gerenciador de games")
+@Tag(name = "Games")
 public class GameController {
 	
 	@Autowired
